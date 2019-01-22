@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user.ts';
+import { User } from '../user';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +8,7 @@ import { User } from '../user.ts';
 })
 export class UsersComponent implements OnInit {
 
-  usersList: []
+  usersList: User[];
 
   constructor() { }
 
