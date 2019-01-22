@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post } from './post';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'My Test SocNet';
+
+  creatingPost: boolean;
+
+  constructor() {
+    this.creatingPost = false;
+  }
+
+  newPost() {
+    this.creatingPost = true;
+  }
+  publishPost(post:Post) {
+    console.log('a');
+    this.creatingPost = false;
+  }
 }
