@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {SuiModule} from 'ng2-semantic-ui';
+import { SuiModule } from 'ng2-semantic-ui';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,21 +10,65 @@ import { GenericPostComponent } from './generic-post/generic-post.component';
 import { UsersComponent } from './users/users.component';
 import { NewPostComponent } from './new-post/new-post.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { environment } from '../environments/environment';
+import { Routes } from '@angular/router';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: AppComponent
+  },
+  {
+    path: 'user/:id',
+    component: UserDetailComponent
+  },
+  {
+    path: 'post/:id',
+    component: GenericPostComponent
+  }
+];
+
+
 @NgModule({
   declarations: [
     AppComponent,
     FeedComponent,
     GenericPostComponent,
     UsersComponent,
-    NewPostComponent
+    NewPostComponent,
+    UserComponent,
+    UserDetailComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     SuiModule,
     CKEditorModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

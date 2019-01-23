@@ -1,13 +1,21 @@
 <div class="root">
   <h1 class="ui header">We're on!</h1>
 
+  <div class="ui five item menu">
+    <a class="item active" [routerLink]="['/home']">Home</a>
+    <a class="item" [routerLink]="['/profile']">Profile</a>
+    <a class="item" [routerLink]="['/spots']">Spots</a>
+  </div>
+
   <button class="ui button" tabindex="0" (click)="newPost()">
     <i class="heart icon"></i>
     New Post
   </button>
 
-<app-new-post *ngIf="creatingPost" (complete)="publishPost($event)"></app-new-post>
+  <app-new-post *ngIf="creatingPost" (complete)="publishPost($event)"></app-new-post>
 
 </div>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

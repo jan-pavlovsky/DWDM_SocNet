@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from './post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   creatingPost: boolean;
 
-  constructor() {
+  constructor(private router: Router) {
     this.creatingPost = false;
   }
 
