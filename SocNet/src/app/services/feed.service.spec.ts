@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FeedServiceService } from './feed-service.service';
+import { FeedService } from './feed.service';
 
-describe('FeedServiceService', () => {
+describe('FeedService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FeedServiceService = TestBed.get(FeedServiceService);
+    const service: FeedService = TestBed.get(FeedService);
     expect(service).toBeTruthy();
   });
 });
