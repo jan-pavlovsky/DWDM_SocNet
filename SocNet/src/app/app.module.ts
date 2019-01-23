@@ -31,13 +31,27 @@ const routes: Routes = [
     component: AppComponent
   },
   {
-    path: 'user/:id',
+    path: 'users/',
     component: UserDetailComponent
   },
   {
-    path: 'post/:id',
-    component: GenericPostComponent
-  }
+    path: 'posts/',
+    component: GenericPostComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: UsersComponent
+      },
+      {
+        path: ':id',
+        component: UserDetailComponent
+      }
+]}
 ];
 
 
