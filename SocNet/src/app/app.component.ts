@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Post } from './post';
 import { Router } from '@angular/router';
+import { FirebaseService } from './firebase.service';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +15,27 @@ export class AppComponent {
 
   creatingPost: boolean;
 
-  constructor(private router: Router) {
+  posts: Array<any>;
+
+  constructor(private router: Router, private firebaseService: FirebaseService) {
     this.creatingPost = false;
+    console.log(environment.testVal);
   }
 
   newPost() {
     this.creatingPost = true;
   }
-  publishPost(post:Post) {
-    console.log('a');
+  publishPost(post: Post) {
+    console.log('posting');
+    this.firebaseService.addDocument();
+    console.log('posted');
     this.creatingPost = false;
+  }
+
+  ngOnInit() {
+    console.log('init')
+    this.firebaseService.posts().subscribe(result => {
+      this.posts = result;
+    })
   }
 }

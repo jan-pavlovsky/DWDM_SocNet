@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
+  testVal: 'mee',
   firebase: {
-    apiKey: "AIzaSyAa1z9Ce6pAX46tOPLTzBjKJiHaEl0G7XE",
-    authDomain: "dwdm-socnet.firebaseapp.com",
-    databaseURL: "https://dwdm-socnet.firebaseio.com",
-    projectId: "dwdm-socnet",
-    storageBucket: "dwdm-socnet.appspot.com",
-    messagingSenderId: "354463516216"
+    apiKey: "AIzaSyB7_TnQxwfqZbqv7dg4tb9vhA-caaiFCwE",
+    authDomain: "socnet-d9a4a.firebaseapp.com",
+    databaseURL: "https://socnet-d9a4a.firebaseio.com",
+    projectId: "socnet-d9a4a",
+    storageBucket: "socnet-d9a4a.appspot.com",
+    messagingSenderId: "6966806466"
   }
 };
 

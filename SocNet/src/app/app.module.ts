@@ -11,13 +11,14 @@ import { UsersComponent } from './users/users.component';
 import { NewPostComponent } from './new-post/new-post.component';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
 import { Routes } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { FirebaseService } from './firebase.service';
 
 
 const routes: Routes = [
@@ -51,9 +52,9 @@ const routes: Routes = [
         path: ':id',
         component: UserDetailComponent
       }
-]}
+    ]
+  }
 ];
-
 
 @NgModule({
   declarations: [
@@ -75,13 +76,18 @@ const routes: Routes = [
   ],
   providers: [
     {
+      provide: FirestoreSettingsToken,
+      useValue: {}
+    },
+    {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
     {
       provide: APP_BASE_HREF,
       useValue: '/'
-    }
+    },
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

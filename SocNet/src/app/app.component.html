@@ -16,6 +16,12 @@
 
 </div>
 
-<div class="container">
-  <router-outlet></router-outlet>
+<div *ngFor="let post of posts" class="list item">
+  Item
+  <p>{{post.payload.doc.data().name}}</p>
+  <p>{{post.payload.doc.data().content}}</p>
 </div>
+
+<div class=" container">
+    <router-outlet></router-outlet>
+  </div>
