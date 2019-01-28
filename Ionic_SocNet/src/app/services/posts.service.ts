@@ -15,7 +15,7 @@ export class PostsService {
   }
 
   public getAllPosts() {
-    return this.db.collection('/posts').valueChanges();
+    return this.db.collection('/posts').snapshotChanges();
   }
 
   public createPost(post: Post) {

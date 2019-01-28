@@ -1,6 +1,6 @@
 <div class="ui column">
   <header class="ui header columnHeader"> The Feed</header>
   <div *ngFor="let post of sortedPosts()" class="list item">
-    <app-generic-post [post]=post (deletePostEvent)=deletePost($event)></app-generic-post>
+    <app-generic-post [post]=post (deletePostEvent)=deletePost($event) (updatePostEvent)=updatePost($event)></app-generic-post>
   </div>
 </div>
