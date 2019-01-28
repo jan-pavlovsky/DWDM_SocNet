@@ -14,30 +14,30 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
-import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { FirebaseService } from './firebase.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   {
+    path: 'newPost/:userId',
+    component: NewPostComponent,
+    outlet: 'modal'
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'feed',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: AppComponent
+    path: 'profile',
+    component: ProfileComponent
   },
   {
-    path: 'users/',
-    component: UserDetailComponent
-  },
-  {
-    path: 'posts/',
-    component: GenericPostComponent,
+    path: 'users',
+    component: UsersComponent,
     children: [
       {
         path: '',
@@ -53,6 +53,25 @@ const routes: Routes = [
         component: UserDetailComponent
       }
     ]
+  },
+  {
+    path: 'feed',
+    component: FeedComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: FeedComponent
+      },
+      {
+        path: ':id',
+        component: GenericPostComponent
+      }
+    ]
   }
 ];
 
@@ -63,11 +82,12 @@ const routes: Routes = [
     GenericPostComponent,
     UsersComponent,
     NewPostComponent,
-    UserComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    ProfileComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
+    RouterModule.forRoot(routes),
     AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
@@ -87,7 +107,6 @@ const routes: Routes = [
       provide: APP_BASE_HREF,
       useValue: '/'
     },
-    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

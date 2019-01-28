@@ -1,27 +1,20 @@
-<div class="root">
+<div class="ui container root">
   <h1 class="ui header">We're on!</h1>
 
   <div class="ui five item menu">
-    <a class="item active" [routerLink]="['/home']">Home</a>
-    <a class="item" [routerLink]="['/profile']">Profile</a>
-    <a class="item" [routerLink]="['/spots']">Spots</a>
+    <a class="item" [routerLinkActive]="['active']" [routerLink]="['/feed']">Feed</a>
+    <a class="item" [routerLinkActive]="['active']" [routerLink]="['/profile']">Profile</a>
+    <a class="item" [routerLinkActive]="['active']" [routerLink]="['/users']">Users</a>
   </div>
 
-  <button class="ui button" tabindex="0" (click)="newPost()">
+  <button class="ui button" id="newPost" tabindex="0" (click)="newPost()">
     <i class="heart icon"></i>
     New Post
   </button>
 
-  <app-new-post *ngIf="creatingPost" (complete)="publishPost($event)"></app-new-post>
-
-</div>
-
-<div *ngFor="let post of posts" class="list item">
-  Item
-  <p>{{post.payload.doc.data().name}}</p>
-  <p>{{post.payload.doc.data().content}}</p>
-</div>
-
-<div class=" container">
+  <div class="ui container">
     <router-outlet></router-outlet>
+    <router-outlet name="modal"></router-outlet>
   </div>
+
+</div>

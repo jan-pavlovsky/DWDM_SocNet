@@ -1,3 +1,6 @@
-<p>
-  generic-post works!
-</p>
+<div class="ui raised very padded text container segment">
+  <h2 class="ui header">Post</h2>
+  <div class="name">{{post.name}}</div>
+  <div class="time">{{ post.created| date:'medium' }} </div>
+  <div class="content" [innerHTML]="post.content"></div>
+</div>

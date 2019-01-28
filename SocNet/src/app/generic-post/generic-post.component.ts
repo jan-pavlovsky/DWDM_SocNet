@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from '../model/post';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-generic-post',
@@ -8,12 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GenericPostComponent implements OnInit {
 
-  id: string;
+  @Input() post: Post;
 
-  constructor(private route: ActivatedRoute) {
-    route.params.subscribe(params => {
-      this.id = params['id'];
-    });
+  constructor() {
   }
 
   ngOnInit() {

@@ -1,3 +1,6 @@
-<p>
-  feed works!
-</p>
+<div class="ui column">
+  <header class="ui header columnHeader"> The Feed</header>
+  <div *ngFor="let post of sortedPosts()" class="list item">
+    <app-generic-post [post]=post></app-generic-post>
+  </div>
+</div>

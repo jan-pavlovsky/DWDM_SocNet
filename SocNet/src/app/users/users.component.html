@@ -1,3 +1,6 @@
-<p>
-  users works!
-</p>
+<div class="ui column">
+    <header class="ui header columnHeader"> Users </header>
+    <div *ngFor="let user of usersList" class="list item">
+      <app-user-detail [user]="user"></app-user-detail>
+    </div>
+  </div>

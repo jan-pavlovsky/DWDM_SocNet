@@ -1,11 +1,11 @@
-<sui-modal [isClosable]="true" (dismissed)="done()" #modal>
+<sui-modal [isClosable]="true" (dismissed)="done(false)" #modal>
     <h1 class="header">New Post</h1>
     <div class="content">
         <p>The content:</p>
-        <ckeditor [editor]="editor" data="<p>Hello, world!</p>"></ckeditor>
+        <ckeditor [editor]="editor" [data]="editorData" (change)="onChange($event)"></ckeditor>
     </div>
     <div class="actions">
-        <button class="ui red button" (click)="modal.deny();">Cancel</button>
-        <button class="ui green button" (click)="modal.approve('done');" autofocus>OK</button>
+        <button class="ui red button" (click)="done(true);modal.deny();">Cancel</button>
+        <button class="ui green button" (click)="done(true);modal.approve();" autofocus>OK</button>
     </div>
 </sui-modal>
