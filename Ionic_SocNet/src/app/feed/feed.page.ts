@@ -19,13 +19,13 @@ export class FeedPage implements OnInit {
   sortedPosts() {
     if (typeof this.posts === 'undefined') return []
     else
-    return this.posts.sort(
-        (post1: Post, post2: Post): number => {return post2.created - post1.created}
-    );
+      return this.posts.sort(
+        (post1: Post, post2: Post): number => { return post2.created - post1.created }
+      );
   }
 
   constructor(private postsService: PostsService, private modalController: ModalController) {
-   }
+  }
 
   ngOnInit() {
     console.log('init')
@@ -51,8 +51,9 @@ export class FeedPage implements OnInit {
     modal.onDidDismiss().then((detail) => {
       if (detail !== null) {
         console.log('The result:', detail.data);
+        this.postsService.createPost(detail.data);
       }
-   }).catch((error) => {
+    }).catch((error) => {
       console.log(error);
     })
 

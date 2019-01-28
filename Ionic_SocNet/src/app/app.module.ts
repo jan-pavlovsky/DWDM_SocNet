@@ -17,13 +17,15 @@ import { UsersService } from './services/users.service';
 import { PostsService } from './services/posts.service';
 import { NewPostComponent } from './new-post/new-post.component';
 
+import {FormsModule} from '@angular/forms'
+
 
 @NgModule({
   declarations: [AppComponent, NewPostComponent],
   entryComponents: [NewPostComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule, FormsModule
   ],
   providers: [
     {

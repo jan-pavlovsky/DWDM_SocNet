@@ -20,7 +20,7 @@ export class PostsService {
 
   public createPost(post: Post) {
     this.db.collection("/posts").add({
-      name: post.user.alias,
+      name: post.name,
       created: post.created,
       content: post.content
     }).then(function () {

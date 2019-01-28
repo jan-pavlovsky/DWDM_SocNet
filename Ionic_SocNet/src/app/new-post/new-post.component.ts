@@ -22,11 +22,13 @@ export class NewPostComponent implements OnInit {
   }
   
   async myDismiss() {
+console.log(this.mainText);
+
     this.post.created = Date.now();
     this.post.content = this.mainText;
-    this.post.user = new User({alias: "ionicUser"});
+    this.post.name = "ionicUser";
 
-    
+    console.log(this.post);
     await this.modalController.dismiss(this.post);
   }
 

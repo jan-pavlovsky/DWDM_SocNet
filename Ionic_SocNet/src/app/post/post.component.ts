@@ -13,13 +13,17 @@ export class PostComponent implements OnInit {
   post: Post;
 
   @Output()
-  deletePostEvent: EventEmitter<string>;
-
-  constructor() { }
+  deletePostEvent: EventEmitter<Post> = new EventEmitter();
 
   deletePost() {
-
+    this.deletePostEvent.emit(this.post);
   }
+
+  updatePost() {
+    console.log("Update Post: " + this.post.id);
+  }
+
+  constructor() { }
 
   ngOnInit() {
   }
