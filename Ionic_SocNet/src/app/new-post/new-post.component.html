@@ -1,0 +1,20 @@
+<ion-header>Create a new post</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="floating">The post heading</ion-label>
+        <ion-textarea value="Heading...?" placeholder="true"></ion-textarea>
+      </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">The post contents</ion-label>
+    <ion-textarea rows="20" cols="20" placeholder="Write the post" clearOnEdit="true" [(ngModel)]="mainText"></ion-textarea>
+  </ion-item>
+
+
+  <ion-button>
+    Continue
+    <ion-icon slot="end" position="end" name="arrow-round-forward"></ion-icon>
+  </ion-button>
+
+</ion-content>

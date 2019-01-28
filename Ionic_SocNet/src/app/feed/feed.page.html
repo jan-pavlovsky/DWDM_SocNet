@@ -4,15 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
   <ion-list>
     <ion-item *ngFor="let post of posts" class="list item">
-      Item
-      <p>{{post.payload.doc.data().name}}</p>
-      <p>{{post.payload.doc.data().content}}</p>
-
+      <app-post [post]="post"></app-post>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createNewPost()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

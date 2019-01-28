@@ -1,3 +1,8 @@
-<p>
-  post works!
-</p>
+<ion-item id="content">
+  <ion-header id="head">
+    <ion-item slot="start">A Post</ion-item>
+    <ion-item slot="end">{{post.name}}</ion-item>
+    <ion-item>{{post.created| date:'short'}} </ion-item>
+  </ion-header>
+  <ion-item [innerHTML]=post.content></ion-item>
+</ion-item>

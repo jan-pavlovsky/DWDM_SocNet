@@ -16,7 +16,7 @@ export class PostsService {
   }
 
   public getAllPosts() {
-    return this.db.collection('/posts').valueChanges();
+    return this.db.collection('/posts').snapshotChanges();
   }
 
   public createPost(post: Post) {
@@ -28,7 +28,7 @@ export class PostsService {
       console.log("Document successfully written!");
     }).catch(function (error) {
       console.error("Error writing document: ", error);
-    });
+    }).then
   }
 
   public getPostById(id: string) {

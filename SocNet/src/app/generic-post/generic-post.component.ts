@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from '../model/post';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-generic-post',
@@ -11,6 +9,17 @@ import { DatePipe } from '@angular/common';
 export class GenericPostComponent implements OnInit {
 
   @Input() post: Post;
+
+  @Output()
+  deletePostEvent: EventEmitter<Post> = new EventEmitter();
+
+  deletePost() {
+    this.deletePostEvent.emit(this.post);
+  }
+
+  updatePost() {
+    console.log("Update Post: " + this.post.id);
+  }
 
   constructor() {
   }

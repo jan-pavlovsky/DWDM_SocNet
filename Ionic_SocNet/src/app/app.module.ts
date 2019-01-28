@@ -8,21 +8,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
-import { Routes } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { UsersService } from './services/users.service';
 import { PostsService } from './services/posts.service';
+import { NewPostComponent } from './new-post/new-post.component';
 
 
 @NgModule({
-  declarations: [AppComponent, PostComponent],
-  entryComponents: [],
+  declarations: [AppComponent, NewPostComponent],
+  entryComponents: [NewPostComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

@@ -3,4 +3,7 @@
   <div class="name">{{post.name}}</div>
   <div class="time">{{ post.created| date:'medium' }} </div>
   <div class="content" [innerHTML]="post.content"></div>
+
+  <button class="ui button" (click)="updatePost()">Update</button>
+  <button class="ui button" (click)="deletePost()">Detele</button>
 </div>
